@@ -25,12 +25,12 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-abstract_target 'RNTSBoilerplateCommonPods' do
+abstract_target 'RNInstaCloneCommonPods' do
 
-  target 'RNTSBoilerplateDev' do
+  target 'RNInstaCloneDev' do
   end
 
-  target 'RNTSBoilerplate' do
+  target 'RNInstaClone' do
   end
 
   pod 'react-native-config', :path => '../node_modules/react-native-config'
@@ -56,7 +56,7 @@ abstract_target 'RNTSBoilerplateCommonPods' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'RNTSBoilerplateTests' do
+  target 'RNInstaCloneTests' do
     inherit! :complete
     # Pods for testing
   end

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1210"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -10,14 +10,14 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.development&quot; &gt; /tmp/envfile&#10;">
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.production&quot; &gt; /tmp/envfile&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "1841E23E2AA5FD6900124A42"
-                     BuildableName = "RNTSBoilerplateDev.app"
-                     BlueprintName = "RNTSBoilerplateDev"
-                     ReferencedContainer = "container:RNTSBoilerplate.xcodeproj">
+                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+                     BuildableName = "RNInstaClone.app"
+                     BlueprintName = "RNInstaClone"
+                     ReferencedContainer = "container:RNInstaClone.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -32,10 +32,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1841E23E2AA5FD6900124A42"
-               BuildableName = "RNTSBoilerplateDev.app"
-               BlueprintName = "RNTSBoilerplateDev"
-               ReferencedContainer = "container:RNTSBoilerplate.xcodeproj">
+               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+               BuildableName = "RNInstaClone.app"
+               BlueprintName = "RNInstaClone"
+               ReferencedContainer = "container:RNInstaClone.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,8 +44,19 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "RNInstaCloneTests.xctest"
+               BlueprintName = "RNInstaCloneTests"
+               ReferencedContainer = "container:RNInstaClone.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -62,14 +73,14 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.development&quot; &gt; /tmp/envfile&#10;">
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.production&quot; &gt; /tmp/envfile&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "1841E23E2AA5FD6900124A42"
-                     BuildableName = "RNTSBoilerplateDev.app"
-                     BlueprintName = "RNTSBoilerplateDev"
-                     ReferencedContainer = "container:RNTSBoilerplate.xcodeproj">
+                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+                     BuildableName = "RNInstaClone.app"
+                     BlueprintName = "RNInstaClone"
+                     ReferencedContainer = "container:RNInstaClone.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -79,10 +90,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1841E23E2AA5FD6900124A42"
-            BuildableName = "RNTSBoilerplateDev.app"
-            BlueprintName = "RNTSBoilerplateDev"
-            ReferencedContainer = "container:RNTSBoilerplate.xcodeproj">
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "RNInstaClone.app"
+            BlueprintName = "RNInstaClone"
+            ReferencedContainer = "container:RNInstaClone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -96,10 +107,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1841E23E2AA5FD6900124A42"
-            BuildableName = "RNTSBoilerplateDev.app"
-            BlueprintName = "RNTSBoilerplateDev"
-            ReferencedContainer = "container:RNTSBoilerplate.xcodeproj">
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "RNInstaClone.app"
+            BlueprintName = "RNInstaClone"
+            ReferencedContainer = "container:RNInstaClone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

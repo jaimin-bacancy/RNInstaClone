@@ -1,4 +1,4 @@
-package com.rntsboilerplate;
+package com.rninstaclone;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

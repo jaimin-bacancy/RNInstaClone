@@ -10,7 +10,7 @@ export function SignIn(): JSX.Element {
   return (
     <View style={styles.container}>
       <Text style={styles.textHelloUser}>
-        {strings.formatString(strings.helloUser, 'RNTS-Boilerplate')}
+        {strings.formatString(strings.helloUser, 'RNTS')}
       </Text>
     </View>
   );

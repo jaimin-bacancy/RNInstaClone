@@ -82,17 +82,17 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.rntsboilerplate"
+    namespace "com.rninstaclone"
     defaultConfig {
-        applicationId "com.rntsboilerplate"
+        applicationId "com.rninstaclone"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         def date = new Date();
         def newName = date.format('MM_dd_yyyy')
-        setProperty("archivesBaseName", "rntsboilerplate_" + versionName + "(" + versionCode + ")" + "_" + newName);
-        resValue "string", "build_config_package", "com.rntsboilerplate"
+        setProperty("archivesBaseName", "RNInstaClone_" + versionName + "(" + versionCode + ")" + "_" + newName);
+        resValue "string", "build_config_package", "com.rninstaclone"
     }
     signingConfigs {
         debug {
@@ -119,15 +119,15 @@ android {
     productFlavors {
         development {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId 'com.rntsboilerplate.dev'
+            applicationId 'com.rninstaclone.dev'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.rntsboilerplate"
+            resValue "string", "build_config_package", "com.rninstaclone"
         }
         production {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId 'com.rntsboilerplate'
+            applicationId 'com.rninstaclone'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.rntsboilerplate"
+            resValue "string", "build_config_package", "com.rninstaclone"
         }
     }
 }

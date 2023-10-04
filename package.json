@@ -1,5 +1,5 @@
 {
-  "name": "RNTSBoilerplate",
+  "name": "rninstaclone",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,8 +7,8 @@
     "android:dev-release": "react-native run-android --mode=developmentRelease",
     "android:prod": "react-native run-android --mode=productionDebug",
     "android:prod-release": "react-native run-android --mode=productionRelease",
-    "ios:dev": "react-native run-ios --scheme=RNTSBoilerplateDev",
-    "ios:prod": "react-native run-ios --scheme=RNTSBoilerplate",
+    "ios:dev": "react-native run-ios --scheme=RNInstaCloneDev",
+    "ios:prod": "react-native run-ios --scheme=RNInstaClone",
     "pod": "cd ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install && cd ..",
     "start": "react-native start",
     "link-asset": "npx react-native-asset",
