@@ -2,6 +2,7 @@ import { ThemeNavigationColors } from '@/theme/types/theme';
 
 export const Colors = {
   primary: '#7454a5',
+  black: '#FFFFFF',
   textGray800: '#E0E0E0',
   textGray400: '#969696',
   textGray200: '#BABABA',

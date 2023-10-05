@@ -4,7 +4,8 @@ export const Colors = {
   transparent: 'rgba(0,0,0,0)',
   inputBackground: '#FFFFFF',
   background: '#FFFFFF',
-  white: '#ffffff',
+  white: '#FFFFFF',
+  black: '#000000',
   //Typography
   textGray800: '#000000',
   textGray400: '#4D4D4D',
@@ -21,8 +22,8 @@ export const Colors = {
 `Partial<ThemeNavigationColors>`. */
 export const NavigationColors: Partial<ThemeNavigationColors> = {
   primary: Colors.primary,
-  background: '#EFEFEF',
-  card: '#EFEFEF',
+  background: '#FFFFFF',
+  card: '#FFFFFF',
 };
 
 export default {

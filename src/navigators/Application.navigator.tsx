@@ -18,11 +18,10 @@ type ApplicationStackParamList = {
 const Stack = createStackNavigator<ApplicationStackParamList>();
 
 export function ApplicationNavigator() {
-  const { navigationColors, barStyle } = useTheme();
+  const { barStyle, colors } = useTheme();
 
   return (
-    <SafeAreaView
-      style={[Layout.fill, { backgroundColor: navigationColors.card }]}>
+    <SafeAreaView style={[Layout.fill, { backgroundColor: colors.background }]}>
       <NavigationContainer ref={navigationRef}>
         <StatusBar barStyle={barStyle} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>

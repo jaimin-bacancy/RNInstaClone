@@ -14,7 +14,7 @@ export function Startup(): JSX.Element {
       }, 2000),
     );
 
-    resetRoot('AuthNavigator', 'SignIn');
+    resetRoot('AuthorizedNavigator', 'Home');
   };
 
   useEffect(() => {

@@ -7,6 +7,8 @@ const styles = colors =>
       ...Layout.fill,
       backgroundColor: colors.background,
     },
+    viewStories: {},
+    viewPosts: {},
   });
 
 export default styles;

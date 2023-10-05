@@ -1,12 +1,12 @@
-import fs from 'fs';
+const fs = require('fs');
 
 const imageFileNames = () => {
   const array = fs
     .readdirSync('src/assets/icons')
-    .filter((file: string) => {
+    .filter(file => {
       return file.endsWith('.png');
     })
-    .map((file: string) => {
+    .map(file => {
       return file
         .replace('@1x.png', '.png')
         .replace('@2x.png', '.png')
@@ -33,3 +33,5 @@ export default Icons;
 };
 
 generate();
+
+export {};
