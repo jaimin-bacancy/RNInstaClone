@@ -4,6 +4,9 @@ export const Posts = [
     images: [
       { url: 'https://loremflickr.com/640/360' },
       { url: 'https://loremflickr.com/640/360' },
+      { url: 'https://loremflickr.com/640/360' },
+      { url: 'https://loremflickr.com/640/360' },
+      { url: 'https://loremflickr.com/640/360' },
     ],
     isLiked: false,
   },

@@ -1,11 +1,12 @@
 import { Icons } from '@/assets';
-import { useStyle } from '@/hooks';
+import { useStyle, useTheme } from '@/hooks';
 import { MediaResponse, PostResponse } from '@/models';
-import { Layout } from '@/theme';
-import React, { useCallback } from 'react';
+import { Layout, WIDTH } from '@/theme';
+import React, { useCallback, useRef } from 'react';
 import {
   Image,
   ImageBackground,
+  Animated as RNAnimated,
   ScrollView,
   TouchableOpacity,
   View,
@@ -31,6 +32,13 @@ type BottomActionsPropTypes = {
   likeButtonScale: SharedValue<number>;
   post: PostResponse;
   onLike: Function;
+  scrollX: RNAnimated.Value;
+};
+
+type ScrollingDotsPropTypes = {
+  post: PostResponse;
+  scrollX: RNAnimated.Value;
+  styles: any;
 };
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
@@ -46,12 +54,44 @@ function BottomAction({ icon, styles }) {
   );
 }
 
+function ScrollingDots({ post, styles, scrollX }: ScrollingDotsPropTypes) {
+  const { colors } = useTheme();
+  return (
+    <>
+      {post.images.length > 1 && (
+        <View style={styles.indicatorContainer}>
+          <View style={styles.indicatorInnerContainer}>
+            {post.images.map((image, imageIndex) => {
+              const color = scrollX.interpolate({
+                inputRange: [
+                  WIDTH * (imageIndex - 1),
+                  WIDTH * imageIndex,
+                  WIDTH * (imageIndex + 1),
+                ],
+                outputRange: [colors.black, colors.primary, colors.black],
+                extrapolate: 'clamp',
+              });
+              return (
+                <RNAnimated.View
+                  key={imageIndex}
+                  style={[styles.normalDot, { backgroundColor: color }]}
+                />
+              );
+            })}
+          </View>
+        </View>
+      )}
+    </>
+  );
+}
+
 function BottomActionsView({
   styles,
   reanimatedStyle,
   likeButtonScale,
   post,
   onLike,
+  scrollX,
 }: BottomActionsPropTypes) {
   return (
     <View style={styles.viewActionButtons}>
@@ -78,7 +118,10 @@ function BottomActionsView({
         <BottomAction icon={Icons.comment} styles={styles} />
         <BottomAction icon={Icons.send} styles={styles} />
       </View>
-      <BottomAction icon={Icons.save} styles={styles} />
+      <ScrollingDots post={post} scrollX={scrollX} styles={styles} />
+      <View>
+        <BottomAction icon={Icons.save} styles={styles} />
+      </View>
     </View>
   );
 }
@@ -112,9 +155,27 @@ export function PostItem({ post, onLike }: PostItemPropTypes): JSX.Element {
     transform: [{ scale: Math.max(likeButtonScale.value, 1) }],
   }));
 
+  const scrollX = useRef(new RNAnimated.Value(0)).current;
+
   return (
     <View style={styles.container}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal={true}
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onScroll={RNAnimated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  x: scrollX,
+                },
+              },
+            },
+          ],
+          { useNativeDriver: false },
+        )}
+        scrollEventThrottle={1}>
         {post.images.map((item: MediaResponse, index: number) => {
           return (
             <DoubleTap
@@ -143,6 +204,7 @@ export function PostItem({ post, onLike }: PostItemPropTypes): JSX.Element {
         likeButtonScale={likeButtonScale}
         onLike={() => onLike(!post.isLiked)}
         reanimatedStyle={reanimatedBottomStyle}
+        scrollX={scrollX}
       />
     </View>
   );

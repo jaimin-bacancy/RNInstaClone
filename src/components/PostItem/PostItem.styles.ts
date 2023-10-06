@@ -47,6 +47,30 @@ const styles = colors =>
       width: ms(100),
       resizeMode: 'contain',
     },
+    normalDot: {
+      height: ms(6),
+      width: ms(6),
+      borderRadius: ms(3),
+      backgroundColor: 'silver',
+      marginHorizontal: ms(2),
+    },
+    indicatorContainer: {
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      position: 'absolute',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    indicatorInnerContainer: {
+      width: ms(50),
+      overflow: 'hidden',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   });
 
 export default styles;
