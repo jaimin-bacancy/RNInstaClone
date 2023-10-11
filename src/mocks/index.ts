@@ -1,3 +1,4 @@
 import { Posts } from './Posts';
 import { Stories } from './Stories';
-export { Posts, Stories };
+import { StoriesPlaceholders } from './StoriesPlaceholders';
+export { Posts, Stories, StoriesPlaceholders };

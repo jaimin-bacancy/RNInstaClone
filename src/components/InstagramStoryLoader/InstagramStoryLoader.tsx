@@ -1,37 +1,80 @@
 import { useStyle } from '@/hooks';
-import { WIDTH } from '@/theme';
-import React, { useEffect, useState } from 'react';
-import { Animated, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
+import Animated, {
+  Easing,
+  SharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 import style from './InstagramStoryLoader.styles';
 
-export function InstagramStoryLoader(): JSX.Element {
+type InstagramStoryLoaderPropTypes = {
+  width: any;
+  linear: SharedValue<number>;
+  duration?: number;
+  isViewed: boolean;
+  isCurrent: boolean;
+};
+
+export function InstagramStoryLoader({
+  width,
+  linear,
+  isViewed = true,
+  isCurrent = false,
+}: InstagramStoryLoaderPropTypes): JSX.Element {
   const { styles } = useStyle(style);
 
-  const [progress] = useState(new Animated.Value(0));
+  // const [progress] = useState(new Animated.Value(0));
+
+  const animatedChanged = useAnimatedStyle(() => ({
+    width: linear.value,
+  }));
 
   useEffect(() => {
-    const loadingAnimation = () => {
-      Animated.timing(progress, {
-        toValue: 1,
-        duration: 10000,
-        useNativeDriver: true,
-      }).start(() => {
-        progress.setValue(0);
-        loadingAnimation();
-      });
-    };
+    if (!isViewed) {
+      linear.value = withTiming(
+        width,
+        {
+          duration: 5000,
+          easing: Easing.linear,
+        },
+        isFinished => {
+          console.log('isFinished', isFinished);
+        },
+      );
+    }
+  }, [isViewed, linear, width]);
 
-    loadingAnimation();
-  }, [progress]);
+  // useEffect(() => {
+  //   const loadingAnimation = () => {
+  //     Animated.timing(progress, {
+  //       toValue: 1,
+  //       duration: 10000,
+  //       useNativeDriver: true,
+  //     }).start(() => {
+  //       progress.setValue(0);
+  //       loadingAnimation();
+  //     });
+  //   };
 
-  const translateX = progress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [-WIDTH, 0],
-  });
+  //   loadingAnimation();
+  // }, [progress]);
+
+  // const translateX = progress.interpolate({
+  //   inputRange: [0, 1],
+  //   outputRange: [-WIDTH, 0],
+  // });
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.loader, { transform: [{ translateX }] }]} />
+    <View style={[styles.container, { width: '100%' }]}>
+      {isCurrent && !isViewed ? (
+        <Animated.View style={[styles.loader, animatedChanged]} />
+      ) : isViewed ? (
+        <View style={styles.loader} />
+      ) : (
+        <View style={styles.loaderBar} />
+      )}
     </View>
   );
 }

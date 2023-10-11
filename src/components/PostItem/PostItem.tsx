@@ -149,7 +149,7 @@ export function PostItem({ post, onLike }: PostItemPropTypes): JSX.Element {
         likeButtonScale.value = withDelay(200, withSpring(0));
       }
     });
-  }, []);
+  }, [likeButtonScale, onLike, scale]);
 
   const reanimatedBottomStyle = useAnimatedStyle(() => ({
     transform: [{ scale: Math.max(likeButtonScale.value, 1) }],

@@ -51,7 +51,6 @@ const styles = colors =>
       height: ms(6),
       width: ms(6),
       borderRadius: ms(3),
-      backgroundColor: 'silver',
       marginHorizontal: ms(2),
     },
     indicatorContainer: {
@@ -60,16 +59,12 @@ const styles = colors =>
       top: 0,
       bottom: 0,
       position: 'absolute',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
+      ...Layout.rowCenter,
     },
     indicatorInnerContainer: {
       width: ms(50),
       overflow: 'hidden',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
+      ...Layout.rowCenter,
     },
   });
 

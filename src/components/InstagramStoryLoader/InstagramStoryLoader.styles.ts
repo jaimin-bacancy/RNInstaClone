@@ -1,10 +1,9 @@
-import { WIDTH, ms } from '@/theme';
+import { ms } from '@/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = colors =>
   StyleSheet.create({
     container: {
-      width: WIDTH,
       height: ms(2),
       backgroundColor: colors.textGray400,
       borderRadius: ms(2),
@@ -12,6 +11,11 @@ const styles = colors =>
     loader: {
       height: '100%',
       backgroundColor: colors.textGray200,
+      borderRadius: ms(2),
+    },
+    loaderBar: {
+      height: '100%',
+      backgroundColor: colors.textGray400,
       borderRadius: ms(2),
     },
   });

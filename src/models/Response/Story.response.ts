@@ -1,5 +1,7 @@
+import { MediaResponse } from './Media.response';
+
 export class StoryResponse {
-  readonly image!: string | number;
+  readonly medias!: MediaResponse[];
   readonly name!: string;
   readonly isViewed!: boolean;
 }

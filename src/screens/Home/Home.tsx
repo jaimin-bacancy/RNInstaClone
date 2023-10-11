@@ -1,13 +1,9 @@
 import { Icons } from '@/assets';
-import {
-  Header,
-  InstagramStoryLoader,
-  PostItem,
-  StoryItem,
-} from '@/components';
+import { Header, PostItem, StoryItem } from '@/components';
 import { useStyle } from '@/hooks';
-import { Posts, Stories } from '@/mocks';
+import { Posts, StoriesPlaceholders } from '@/mocks';
 import { PostResponse } from '@/models';
+import { navigate } from '@/navigators/NavigationRef';
 import React, { useMemo, useState } from 'react';
 import { FlatList, ScrollView, View } from 'react-native';
 import style from './Home.styles';
@@ -17,9 +13,21 @@ type PostsListPropTypes = {
   setData: Function;
 };
 
-function StoriesList({ styles }) {
+type StoriesListPropTypes = {
+  styles: any;
+  onRelease?: ((e) => void) | null | undefined;
+  onPause?: ((e) => void) | null | undefined;
+  onPress?: ((e) => void) | null | undefined;
+};
+
+function StoriesList({
+  styles,
+  onPress,
+  onPause,
+  onRelease,
+}: StoriesListPropTypes) {
   const sorted = useMemo(() => {
-    return Stories.sort(function (x, y) {
+    return StoriesPlaceholders.sort(function (x, y) {
       return Number(x.isViewed) - Number(y.isViewed);
     });
   }, []);
@@ -32,7 +40,16 @@ function StoriesList({ styles }) {
           user={{ image: Icons.user_1, isViewed: true, name: 'Jaimin' }}
         />
         {sorted.map((item, index) => {
-          return <StoryItem key={index} user={item} isSelfView={false} />;
+          return (
+            <StoryItem
+              key={index}
+              user={item}
+              onPress={onPress}
+              isSelfView={false}
+              onPressIn={onRelease}
+              onPressOut={onPause}
+            />
+          );
         })}
       </ScrollView>
     </View>
@@ -78,8 +95,14 @@ export function Home(): JSX.Element {
           rightIcon={Icons.chat}
           secondRightIcon={Icons.favorite_border}
         />
-        <InstagramStoryLoader />
-        <StoriesList styles={styles} />
+        <StoriesList
+          styles={styles}
+          onPress={index => {
+            navigate('StoryModal', {
+              storyId: index,
+            });
+          }}
+        />
         <PostsList data={posts} setData={setPosts} />
       </ScrollView>
     </View>
