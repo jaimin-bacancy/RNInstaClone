@@ -37,14 +37,14 @@ function StoriesList({
       <ScrollView showsHorizontalScrollIndicator={false} horizontal>
         <StoryItem
           isSelfView
-          user={{ image: Icons.user_1, isViewed: true, name: 'Jaimin' }}
+          user={{ image: Icons.user_1, isViewed: true, name: '' }}
         />
         {sorted.map((item, index) => {
           return (
             <StoryItem
               key={index}
               user={item}
-              onPress={onPress}
+              onPress={() => onPress?.(index)}
               isSelfView={false}
               onPressIn={onRelease}
               onPressOut={onPause}

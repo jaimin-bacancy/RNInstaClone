@@ -1,4 +1,4 @@
-import { ms } from '@/theme';
+import { Layout, ms } from '@/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = colors =>
@@ -7,6 +7,7 @@ const styles = colors =>
       height: ms(2),
       backgroundColor: colors.textGray400,
       borderRadius: ms(2),
+      ...Layout.fullWidth,
     },
     loader: {
       height: '100%',

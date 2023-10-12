@@ -15,7 +15,9 @@ import {
 const useStoryModal = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState(0);
-  const [data, setData] = useState<StoryResponse[]>([...Stories]);
+  const [data, setData] = useState<StoryResponse[]>(
+    JSON.parse(JSON.stringify(Stories)),
+  );
   const route = useRoute<RouteProp<AuthorizedStackParamList, 'StoryModal'>>();
 
   const storyId = useMemo(() => {
@@ -47,8 +49,8 @@ const useStoryModal = () => {
   };
 
   /**
-   * The `onResume` function animates the `linear` value to either -width or width - hs(4) using a
-   * linear easing function.
+   * The `onResume` function calculates the final duration for an animation based on the distance
+   * between two points and then animates a value using that duration.
    */
   const onResume = () => {
     const totalDistance = width - hs(4);
@@ -63,21 +65,19 @@ const useStoryModal = () => {
         duration: finalDuration,
         easing: Easing.linear,
       },
-      isFinished => {
+      (isFinished: boolean | undefined) => {
         if (isFinished) {
-          ('worklet');
           runOnJS(onStoryPress)();
         }
       },
     );
   };
 
-  /* The `onStoryPress` function is a callback function that is created using the `useCallback` hook.
-  It is used to handle the press event on a story in the story modal. */
+  /* The `onStoryPress` function is a callback function that is called when a user presses on a story. */
   const onStoryPress = useCallback(() => {
-    ('worklet');
     // Check if there are more steps
     if (currentStep < Stories[storyId].medias.length - 1) {
+      linear.value = 0;
       // Move to the next step
       setCurrentStep(currentStep + 1);
       setData(prevState => {
@@ -105,6 +105,7 @@ const useStoryModal = () => {
     linear,
     duration,
     currentIndex,
+    data,
     currentStep,
   };
   const setter = { onStoryPress, onPause, onResume };

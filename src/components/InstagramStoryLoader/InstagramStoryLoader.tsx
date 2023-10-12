@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import Animated, {
   Easing,
   SharedValue,
+  runOnJS,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
@@ -15,6 +16,7 @@ type InstagramStoryLoaderPropTypes = {
   duration?: number;
   isViewed: boolean;
   isCurrent: boolean;
+  onStoryPress: any;
 };
 
 export function InstagramStoryLoader({
@@ -22,52 +24,34 @@ export function InstagramStoryLoader({
   linear,
   isViewed = true,
   isCurrent = false,
+  onStoryPress,
 }: InstagramStoryLoaderPropTypes): JSX.Element {
   const { styles } = useStyle(style);
-
-  // const [progress] = useState(new Animated.Value(0));
 
   const animatedChanged = useAnimatedStyle(() => ({
     width: linear.value,
   }));
 
   useEffect(() => {
-    if (!isViewed) {
+    if (isCurrent && !isViewed) {
       linear.value = withTiming(
         width,
         {
           duration: 5000,
           easing: Easing.linear,
         },
-        isFinished => {
-          console.log('isFinished', isFinished);
+        (isFinished: boolean | undefined) => {
+          if (isFinished) {
+            runOnJS(onStoryPress)();
+          }
         },
       );
     }
-  }, [isViewed, linear, width]);
-
-  // useEffect(() => {
-  //   const loadingAnimation = () => {
-  //     Animated.timing(progress, {
-  //       toValue: 1,
-  //       duration: 10000,
-  //       useNativeDriver: true,
-  //     }).start(() => {
-  //       progress.setValue(0);
-  //       loadingAnimation();
-  //     });
-  //   };
-
-  //   loadingAnimation();
-  // }, [progress]);
-
-  // const translateX = progress.interpolate({
-  //   inputRange: [0, 1],
-  //   outputRange: [-WIDTH, 0],
-  // });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCurrent, isViewed, linear, width]);
 
   return (
-    <View style={[styles.container, { width: '100%' }]}>
+    <View style={styles.container}>
       {isCurrent && !isViewed ? (
         <Animated.View style={[styles.loader, animatedChanged]} />
       ) : isViewed ? (
