@@ -104,6 +104,7 @@ export function Home(): JSX.Element {
           }}
         />
         <PostsList data={posts} setData={setPosts} />
+        {/* <MusicSync /> */}
       </ScrollView>
     </View>
   );
