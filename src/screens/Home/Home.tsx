@@ -76,6 +76,7 @@ function PostsList({ data, setData }: PostsListPropTypes) {
             key={index}
             post={item}
             onLike={(isLiked: boolean) => onLike(setData, index, isLiked)}
+            onItemClick={() => navigate('PostDetail')}
           />
         );
       }}

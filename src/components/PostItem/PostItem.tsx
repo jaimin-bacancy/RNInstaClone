@@ -24,6 +24,7 @@ import style from './PostItem.styles';
 type PostItemPropTypes = {
   post: PostResponse;
   onLike: Function;
+  onItemClick: Function;
 };
 
 type BottomActionsPropTypes = {
@@ -126,7 +127,11 @@ function BottomActionsView({
   );
 }
 
-export function PostItem({ post, onLike }: PostItemPropTypes): JSX.Element {
+export function PostItem({
+  post,
+  onLike,
+  onItemClick,
+}: PostItemPropTypes): JSX.Element {
   const { styles } = useStyle(style);
 
   const scale = useSharedValue(0);
@@ -180,7 +185,7 @@ export function PostItem({ post, onLike }: PostItemPropTypes): JSX.Element {
           return (
             <DoubleTap
               key={index}
-              singleTap={() => {}}
+              singleTap={onItemClick}
               doubleTap={doubleTap}
               delay={200}>
               <Animated.View>
@@ -189,6 +194,7 @@ export function PostItem({ post, onLike }: PostItemPropTypes): JSX.Element {
                   resizeMode="cover"
                   style={styles.imgPost}>
                   <AnimatedImage
+                    sharedTransitionTag="image"
                     source={Icons.favorite}
                     style={[styles.imgFavorite, reanimatedStyle]}
                   />

@@ -1,4 +1,4 @@
-import { Home, StoryModal } from '@/screens';
+import { Home, PostDetail, StoryModal } from '@/screens';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
@@ -7,6 +7,7 @@ export type AuthorizedStackParamList = {
   StoryModal: {
     storyId: string;
   };
+  PostDetail: undefined;
 };
 
 const Stack = createStackNavigator<AuthorizedStackParamList>();
@@ -20,6 +21,7 @@ export function AuthorizedNavigator() {
         component={StoryModal}
         options={{ presentation: 'modal' }}
       />
+      <Stack.Screen name="PostDetail" component={PostDetail} />
     </Stack.Navigator>
   );
 }
