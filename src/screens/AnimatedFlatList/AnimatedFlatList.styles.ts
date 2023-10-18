@@ -1,4 +1,4 @@
-import { Layout, Typography } from '@/theme';
+import { Layout, vs } from '@/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = colors =>
@@ -7,10 +7,7 @@ const styles = colors =>
       ...Layout.fill,
       backgroundColor: colors.background,
     },
-    textHelloUser: {
-      ...Typography._12SemiBold,
-      color: colors.textGray800,
-    },
+    listContainer: { paddingTop: vs(40) },
   });
 
 export default styles;

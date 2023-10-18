@@ -19,9 +19,9 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 import DoubleTap from '../DoubleTap/DoubleTap';
-import style from './PostItem.styles';
+import style from './FeedItem.styles';
 
-type PostItemPropTypes = {
+type FeedItemPropTypes = {
   post: PostResponse;
   onLike: Function;
   onItemClick: Function;
@@ -127,11 +127,11 @@ function BottomActionsView({
   );
 }
 
-export function PostItem({
+export function FeedItem({
   post,
   onLike,
   onItemClick,
-}: PostItemPropTypes): JSX.Element {
+}: FeedItemPropTypes): JSX.Element {
   const { styles } = useStyle(style);
 
   const scale = useSharedValue(0);
@@ -194,7 +194,7 @@ export function PostItem({
                   resizeMode="cover"
                   style={styles.imgPost}>
                   <AnimatedImage
-                    sharedTransitionTag="image"
+                    sharedTransitionTag="sharedTransition"
                     source={Icons.favorite}
                     style={[styles.imgFavorite, reanimatedStyle]}
                   />

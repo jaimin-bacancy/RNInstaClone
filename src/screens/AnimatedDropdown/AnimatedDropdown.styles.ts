@@ -5,6 +5,7 @@ const styles = colors =>
   StyleSheet.create({
     container: {
       ...Layout.fill,
+      ...Layout.colCenter,
       backgroundColor: colors.background,
     },
     viewImage: {

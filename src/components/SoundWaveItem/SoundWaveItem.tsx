@@ -7,11 +7,11 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import style from './MusicSync.styles';
+import style from './SoundWaveItem.styles';
 
 const DURATION = 500;
 
-export function MusicSync(): JSX.Element {
+export function SoundWaveItem(): JSX.Element {
   const { styles } = useStyle(style);
 
   const sharedValue1 = useSharedValue(10);

@@ -1,12 +1,12 @@
 import { Icons } from '@/assets';
-import { Header, PostItem, StoryItem } from '@/components';
+import { FeedItem, Header, StoryItem } from '@/components';
 import { useStyle } from '@/hooks';
 import { Posts, StoriesPlaceholders } from '@/mocks';
 import { PostResponse } from '@/models';
 import { navigate } from '@/navigators/NavigationRef';
 import React, { useMemo, useState } from 'react';
 import { FlatList, ScrollView, View } from 'react-native';
-import style from './Home.styles';
+import style from './Feed.styles';
 
 type PostsListPropTypes = {
   data: PostResponse[];
@@ -72,11 +72,11 @@ function PostsList({ data, setData }: PostsListPropTypes) {
       showsVerticalScrollIndicator={false}
       renderItem={({ item, index }) => {
         return (
-          <PostItem
+          <FeedItem
             key={index}
             post={item}
             onLike={(isLiked: boolean) => onLike(setData, index, isLiked)}
-            onItemClick={() => navigate('PostDetail')}
+            onItemClick={() => {}}
           />
         );
       }}
@@ -84,7 +84,7 @@ function PostsList({ data, setData }: PostsListPropTypes) {
   );
 }
 
-export function Home(): JSX.Element {
+export function Feed(): JSX.Element {
   const { styles } = useStyle(style);
   const [posts, setPosts] = useState([...Posts]);
 
@@ -95,6 +95,7 @@ export function Home(): JSX.Element {
           isShowLogo
           rightIcon={Icons.chat}
           secondRightIcon={Icons.favorite_border}
+          onRightPress={() => navigate('AnimationListing')}
         />
         <StoriesList
           styles={styles}
@@ -105,7 +106,6 @@ export function Home(): JSX.Element {
           }}
         />
         <PostsList data={posts} setData={setPosts} />
-        {/* <MusicSync /> */}
       </ScrollView>
     </View>
   );
