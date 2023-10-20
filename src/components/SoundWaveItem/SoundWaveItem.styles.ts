@@ -8,14 +8,14 @@ const styles = colors => {
       height: vs(10),
       borderRadius: ms(10),
       marginHorizontal: hs(2),
-      backgroundColor: colors.white,
+      backgroundColor: colors.primary,
     },
     viewCenterLine: {
       width: hs(4),
       height: vs(20),
       borderRadius: ms(10),
       marginHorizontal: hs(2),
-      backgroundColor: colors.white,
+      backgroundColor: colors.primary,
     },
     viewMusicController: {
       ...Layout.rowCenter,

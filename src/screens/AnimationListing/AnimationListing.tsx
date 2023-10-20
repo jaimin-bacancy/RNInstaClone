@@ -16,7 +16,7 @@ const list = [
   },
   {
     name: 'Seek Bar',
-    screen: 'SharedTransition',
+    screen: 'AnimatedSeekBar',
   },
   {
     name: 'Shared Transition',

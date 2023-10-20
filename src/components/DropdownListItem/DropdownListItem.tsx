@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { useStyle } from '@/hooks';
+import { useStyle, useTheme } from '@/hooks';
 import Color from 'color';
 import React from 'react';
 import { Text, View, useWindowDimensions } from 'react-native';
@@ -28,6 +28,8 @@ export function DropdownListItem({
   isExpanded,
 }: DropdownListItemProps) {
   const { width: windowWidth } = useWindowDimensions();
+  const { colors } = useTheme();
+
   const DropdownListItemHeight = 40;
   const Margin = 4;
 
@@ -36,7 +38,7 @@ export function DropdownListItem({
   const collapsedTop = fullDropdownHeight / 2 - DropdownListItemHeight * 2;
   const expandedTop = (DropdownListItemHeight + Margin) * index;
 
-  const expandedBackgroundColor = '#1B1B1B';
+  const expandedBackgroundColor = colors.primary;
   const collapsedBackgroundColor = Color(expandedBackgroundColor)
     .lighten(index * 0.25)
     .hex();

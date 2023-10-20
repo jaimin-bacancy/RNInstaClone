@@ -1,5 +1,5 @@
 import { DropdownListItem } from '@/components';
-import { useStyle } from '@/hooks';
+import { useStyle, useTheme } from '@/hooks';
 import { Layout } from '@/theme';
 import React from 'react';
 import { View } from 'react-native';
@@ -13,6 +13,7 @@ import style from './AnimatedDropdown.styles';
 
 export function AnimatedDropdown(): JSX.Element {
   const { styles } = useStyle(style);
+  const { colors } = useTheme();
 
   const options = [
     { label: 'Select' },
@@ -24,7 +25,9 @@ export function AnimatedDropdown(): JSX.Element {
   const isExpanded: SharedValue<boolean> = useSharedValue(false);
 
   const backgroundColor = useAnimatedStyle(() => ({
-    backgroundColor: withTiming(isExpanded.value ? 'rgba(0,0,0,0.5)' : '#000'),
+    backgroundColor: withTiming(
+      isExpanded.value ? 'rgba(0,0,0,0.5)' : colors.background,
+    ),
   }));
 
   return (

@@ -18,7 +18,7 @@ export function AnimationListingItem({
   const { styles } = useStyle(style);
 
   return (
-    <Animated.View sharedTransitionTag="sharedTransition">
+    <Animated.View>
       <TouchableOpacity onPress={onPress} style={[styles.container]}>
         <Text style={styles.textName}>{item.name}</Text>
       </TouchableOpacity>

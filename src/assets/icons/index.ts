@@ -5,6 +5,7 @@ const Icons = {
   favorite: require('@/assets/icons/favorite.png'),
   favorite_border: require('@/assets/icons/favorite_border.png'),
   favorite_red: require('@/assets/icons/favorite_red.png'),
+  flare: require('@/assets/icons/flare.png'),
   instagram: require('@/assets/icons/instagram.png'),
   post_1: require('@/assets/icons/post_1.png'),
   save: require('@/assets/icons/save.png'),

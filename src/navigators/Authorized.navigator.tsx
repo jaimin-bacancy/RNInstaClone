@@ -1,6 +1,7 @@
 import {
   AnimatedDropdown,
   AnimatedFlatList,
+  AnimatedSeekBar,
   AnimationListing,
   Feed,
   SharedTransition,
@@ -20,6 +21,7 @@ export type AuthorizedStackParamList = {
   AnimationListing: undefined;
   AnimatedDropdown: undefined;
   SoundWave: undefined;
+  AnimatedSeekBar: undefined;
 };
 
 const Stack = createStackNavigator<AuthorizedStackParamList>();
@@ -38,6 +40,7 @@ export function AuthorizedNavigator() {
       <Stack.Screen name="AnimationListing" component={AnimationListing} />
       <Stack.Screen name="AnimatedDropdown" component={AnimatedDropdown} />
       <Stack.Screen name="SoundWave" component={SoundWave} />
+      <Stack.Screen name="AnimatedSeekBar" component={AnimatedSeekBar} />
     </Stack.Navigator>
   );
 }

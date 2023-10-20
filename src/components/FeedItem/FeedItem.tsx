@@ -194,7 +194,6 @@ export function FeedItem({
                   resizeMode="cover"
                   style={styles.imgPost}>
                   <AnimatedImage
-                    sharedTransitionTag="sharedTransition"
                     source={Icons.favorite}
                     style={[styles.imgFavorite, reanimatedStyle]}
                   />
