@@ -97,6 +97,10 @@ export const Typography = StyleSheet.create({
     fontSize: FontSize.small,
     fontFamily: Fonts.rubikRegular,
   },
+  _10Medium: {
+    fontSize: FontSize.small,
+    fontFamily: Fonts.rubikMedium,
+  },
   // Small
   _8Regular: {
     fontSize: FontSize.extraSmall,

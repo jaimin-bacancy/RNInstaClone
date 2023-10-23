@@ -1,6 +1,5 @@
 import { useTheme } from '@/hooks';
 import { navigationRef } from '@/navigators/NavigationRef';
-import { Startup } from '@/screens';
 import { Layout } from '@/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -24,7 +23,6 @@ export function ApplicationNavigator() {
       <NavigationContainer ref={navigationRef}>
         <StatusBar barStyle={barStyle} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Startup" component={Startup} />
           <Stack.Screen
             name="AuthorizedNavigator"
             component={AuthorizedNavigator}

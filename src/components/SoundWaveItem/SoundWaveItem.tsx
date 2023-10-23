@@ -11,11 +11,22 @@ import style from './SoundWaveItem.styles';
 
 const DURATION = 500;
 
-export function SoundWaveItem(): JSX.Element {
+type SoundWaveItem = {
+  height?: any;
+  width?: any;
+};
+
+export function SoundWaveItem({
+  height = 20,
+  width = 4,
+}: SoundWaveItem): JSX.Element {
   const { styles } = useStyle(style);
 
-  const sharedValue1 = useSharedValue(10);
-  const sharedValue2 = useSharedValue(20);
+  const minHeight = height / 2;
+  const maxHeight = height;
+
+  const sharedValue1 = useSharedValue(minHeight);
+  const sharedValue2 = useSharedValue(maxHeight);
 
   const reanimated1Style = useAnimatedStyle(() => ({
     height: sharedValue1.value,
@@ -27,14 +38,14 @@ export function SoundWaveItem(): JSX.Element {
 
   const startAnimation = () => {
     sharedValue1.value = withRepeat(
-      withTiming(sharedValue1.value >= 10 ? 20 : 10, {
+      withTiming(sharedValue1.value >= minHeight ? maxHeight : minHeight, {
         duration: DURATION,
       }),
       -1,
       true,
     );
     sharedValue2.value = withRepeat(
-      withTiming(sharedValue2.value >= 20 ? 10 : 20, {
+      withTiming(sharedValue2.value >= maxHeight ? minHeight : maxHeight, {
         duration: DURATION,
       }),
       -1,
@@ -49,9 +60,27 @@ export function SoundWaveItem(): JSX.Element {
 
   return (
     <View style={styles.viewMusicController}>
-      <Animated.View style={[styles.viewStartEndLine, reanimated1Style]} />
-      <Animated.View style={[styles.viewCenterLine, reanimated2Style]} />
-      <Animated.View style={[styles.viewStartEndLine, reanimated1Style]} />
+      <Animated.View
+        style={[
+          styles.viewStartEndLine,
+          { width, height: minHeight },
+          reanimated1Style,
+        ]}
+      />
+      <Animated.View
+        style={[
+          styles.viewCenterLine,
+          { width, height: maxHeight },
+          reanimated2Style,
+        ]}
+      />
+      <Animated.View
+        style={[
+          styles.viewStartEndLine,
+          { width, height: minHeight },
+          reanimated1Style,
+        ]}
+      />
     </View>
   );
 }

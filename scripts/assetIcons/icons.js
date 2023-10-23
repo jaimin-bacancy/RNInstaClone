@@ -18,7 +18,7 @@ const imageFileNames = () => {
 
 const generate = () => {
   const properties = imageFileNames()
-    .map((name: any) => {
+    .map(name => {
       const filename = name.replace('.png', '');
       return `${filename}: require('@/assets/icons/${filename}.png')`;
     })
@@ -33,5 +33,3 @@ export default Icons;
 };
 
 generate();
-
-export {};

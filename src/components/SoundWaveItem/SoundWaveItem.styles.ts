@@ -1,20 +1,20 @@
-import { Layout, hs, ms, vs } from '@/theme';
+import { Layout, hs, ms } from '@/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = colors => {
   return StyleSheet.create({
     viewStartEndLine: {
-      width: hs(4),
-      height: vs(10),
+      width: 4,
+      height: 10,
       borderRadius: ms(10),
-      marginHorizontal: hs(2),
+      marginHorizontal: hs(1),
       backgroundColor: colors.primary,
     },
     viewCenterLine: {
-      width: hs(4),
-      height: vs(20),
+      width: 4,
+      height: 20,
       borderRadius: ms(10),
-      marginHorizontal: hs(2),
+      marginHorizontal: hs(1),
       backgroundColor: colors.primary,
     },
     viewMusicController: {

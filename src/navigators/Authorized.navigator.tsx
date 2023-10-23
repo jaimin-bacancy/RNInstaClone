@@ -3,6 +3,7 @@ import {
   AnimatedFlatList,
   AnimatedSeekBar,
   AnimationListing,
+  Chat,
   Feed,
   SharedTransition,
   SoundWave,
@@ -22,13 +23,16 @@ export type AuthorizedStackParamList = {
   AnimatedDropdown: undefined;
   SoundWave: undefined;
   AnimatedSeekBar: undefined;
+  Chat: undefined;
 };
 
 const Stack = createStackNavigator<AuthorizedStackParamList>();
 
 export function AuthorizedNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      initialRouteName="Feed"
+      screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Feed" component={Feed} />
       <Stack.Screen
         name="StoryModal"
@@ -41,6 +45,7 @@ export function AuthorizedNavigator() {
       <Stack.Screen name="AnimatedDropdown" component={AnimatedDropdown} />
       <Stack.Screen name="SoundWave" component={SoundWave} />
       <Stack.Screen name="AnimatedSeekBar" component={AnimatedSeekBar} />
+      <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>
   );
 }

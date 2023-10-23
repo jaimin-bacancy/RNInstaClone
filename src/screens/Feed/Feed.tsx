@@ -95,7 +95,7 @@ export function Feed(): JSX.Element {
           isShowLogo
           rightIcon={Icons.chat}
           secondRightIcon={Icons.favorite_border}
-          onRightPress={() => navigate('AnimationListing')}
+          onRightPress={() => navigate('Chat')}
         />
         <StoriesList
           styles={styles}
