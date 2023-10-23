@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Animated as RNAnimated,
   ScrollView,
+  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -127,6 +128,24 @@ function BottomActionsView({
   );
 }
 
+function UserDetailHeader({ post, styles }) {
+  return (
+    <View style={styles.viewUserDetailHeader}>
+      <View style={styles.viewUserImage}>
+        <Image source={{ uri: post.userImage }} style={styles.imgUser} />
+      </View>
+      <View style={styles.viewUserName}>
+        <Text style={styles.textUserName} numberOfLines={1}>
+          {post.name ?? ''}
+        </Text>
+      </View>
+      <TouchableOpacity style={styles.btnOptions}>
+        <Image source={Icons.more_vert} style={styles.imgOption} />
+      </TouchableOpacity>
+    </View>
+  );
+}
+
 export function FeedItem({
   post,
   onLike,
@@ -164,6 +183,7 @@ export function FeedItem({
 
   return (
     <View style={styles.container}>
+      <UserDetailHeader post={post} styles={styles} />
       <ScrollView
         horizontal={true}
         pagingEnabled
