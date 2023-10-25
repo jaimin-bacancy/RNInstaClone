@@ -1,0 +1,17 @@
+export enum ROUTES {
+  AnimatedDropdown = 'AnimatedDropdown',
+  AnimatedFlatList = 'AnimatedFlatList',
+  AnimatedSeekBar = 'AnimatedSeekBar',
+  AnimationListing = 'AnimationListing',
+  Chat = 'Chat',
+  Feed = 'Feed',
+  Profile = 'Profile',
+  SharedTransition = 'SharedTransition',
+  SoundWave = 'SoundWave',
+  Startup = 'Startup',
+  StoryModal = 'StoryModal',
+  TabNavigator = 'TabNavigator',
+  Search = 'Search',
+  Reels = 'Reels',
+  Upload = 'Upload',
+}

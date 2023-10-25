@@ -1,4 +1,5 @@
 import { AnimationListingItem } from '@/components';
+import { ROUTES } from '@/constants';
 import { useStyle } from '@/hooks';
 import { navigate } from '@/navigators/NavigationRef';
 import React from 'react';
@@ -8,23 +9,23 @@ import style from './AnimationListing.styles';
 const list = [
   {
     name: 'Sound Wave',
-    screen: 'SoundWave',
+    screen: ROUTES.SoundWave,
   },
   {
     name: 'FlatList',
-    screen: 'AnimatedFlatList',
+    screen: ROUTES.AnimatedFlatList,
   },
   {
     name: 'Seek Bar',
-    screen: 'AnimatedSeekBar',
+    screen: ROUTES.AnimatedSeekBar,
   },
   {
     name: 'Shared Transition',
-    screen: 'SharedTransition',
+    screen: ROUTES.SharedTransition,
   },
   {
     name: 'DropDown',
-    screen: 'AnimatedDropdown',
+    screen: ROUTES.AnimatedDropdown,
   },
 ];
 

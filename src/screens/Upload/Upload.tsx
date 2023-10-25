@@ -1,0 +1,10 @@
+import { useStyle } from '@/hooks';
+import React from 'react';
+import { View } from 'react-native';
+import style from './Upload.styles';
+
+export function Upload(): JSX.Element {
+  const { styles } = useStyle(style);
+
+  return <View style={styles.container} />;
+}

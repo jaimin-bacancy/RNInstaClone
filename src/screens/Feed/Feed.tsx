@@ -1,5 +1,6 @@
 import { Icons } from '@/assets';
 import { FeedItem, Header, StoryItem } from '@/components';
+import { ROUTES } from '@/constants';
 import { useStyle } from '@/hooks';
 import { Posts, StoriesPlaceholders } from '@/mocks';
 import { PostResponse } from '@/models';
@@ -95,12 +96,12 @@ export function Feed(): JSX.Element {
           isShowLogo
           rightIcon={Icons.chat}
           secondRightIcon={Icons.favorite_border}
-          onRightPress={() => navigate('Chat')}
+          onRightPress={() => navigate(ROUTES.Chat)}
         />
         <StoriesList
           styles={styles}
           onPress={index => {
-            navigate('StoryModal', {
+            navigate(ROUTES.StoryModal, {
               storyId: index,
             });
           }}
