@@ -10,7 +10,7 @@ const styles = colors =>
     viewHeader: {
       ...Layout.rowHCenter,
       ...Layout.justifyContentBetween,
-      paddingBottom: vs(8),
+      height: vs(45),
     },
     btnBack: { height: ms(30), width: ms(30), marginStart: ms(20) },
     imgBack: {
@@ -34,7 +34,6 @@ const styles = colors =>
     },
     listNotes: {
       paddingHorizontal: hs(10),
-      marginTop: vs(20),
       marginBottom: vs(10),
     },
     listMessages: {

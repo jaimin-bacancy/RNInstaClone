@@ -6,6 +6,7 @@ const styles = colors =>
     container: {
       ...Layout.center,
       marginHorizontal: hs(10),
+      marginTop: vs(20),
     },
     textUserName: {
       ...Typography._14Medium,

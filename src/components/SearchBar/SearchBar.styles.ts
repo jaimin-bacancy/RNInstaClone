@@ -28,6 +28,7 @@ const styles = colors =>
     inputSearch: {
       ...Typography._14Regular,
       color: colors.black,
+      padding: 0,
       marginStart: hs(8),
     },
   });

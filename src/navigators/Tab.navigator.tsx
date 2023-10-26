@@ -3,7 +3,7 @@ import { Icons } from '@/assets';
 import { ROUTES } from '@/constants';
 import { useTheme } from '@/hooks';
 import { Feed, Profile, Reels, Search, Upload } from '@/screens';
-import { Layout, ms } from '@/theme';
+import { Layout, ms, vs } from '@/theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import React from 'react';
@@ -72,7 +72,7 @@ export function TabNavigator() {
       screenOptions={({ route }: ScreenOptionsPropTypes) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: { backgroundColor: colors.background },
+        tabBarStyle: { backgroundColor: colors.background, height: vs(50) },
         tabBarIcon: ({ focused }) => TabBarIcon(route, focused),
       })}>
       <Tab.Screen name={ROUTES.Feed} component={Feed} />

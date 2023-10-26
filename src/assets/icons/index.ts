@@ -18,6 +18,7 @@ const Icons = {
   instagram: require('@/assets/icons/instagram.png'),
   like: require('@/assets/icons/like.png'),
   more_vert: require('@/assets/icons/more_vert.png'),
+  music_note: require('@/assets/icons/music_note.png'),
   post_1: require('@/assets/icons/post_1.png'),
   profile: require('@/assets/icons/profile.png'),
   reel: require('@/assets/icons/reel.png'),
