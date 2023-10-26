@@ -6,7 +6,6 @@ const styles = colors =>
     container: {
       width: WIDTH,
       height: HEIGHT - (Platform.OS === 'ios' ? vs(140) : vs(50)),
-      backgroundColor: 'red',
       justifyContent: 'center',
     },
     textCount: {

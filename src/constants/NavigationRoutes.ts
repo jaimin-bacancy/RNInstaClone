@@ -14,4 +14,8 @@ export enum ROUTES {
   Search = 'Search',
   Reels = 'Reels',
   Upload = 'Upload',
+  EditProfile = 'EditProfile',
+  Posts = 'Posts',
+  Videos = 'Videos',
+  Tags = 'Tags',
 }

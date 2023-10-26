@@ -81,6 +81,9 @@ export const Layout = StyleSheet.create({
   selfStretch: {
     alignSelf: 'stretch',
   },
+  selfCenter: {
+    alignSelf: 'center',
+  },
   /* Sizes Layouts */
   fill: {
     flex: 1,
@@ -107,6 +110,12 @@ export const Layout = StyleSheet.create({
   },
   rotate90Inverse: {
     transform: [{ rotate: '-90deg' }],
+  },
+  rotate180: {
+    transform: [{ rotate: '180deg' }],
+  },
+  rotate180Inverse: {
+    transform: [{ rotate: '-180deg' }],
   },
   // Position
   relative: {

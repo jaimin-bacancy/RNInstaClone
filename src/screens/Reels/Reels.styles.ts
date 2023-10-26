@@ -13,7 +13,6 @@ const styles = colors =>
       ...Layout.justifyContentBetween,
       paddingHorizontal: hs(20),
       height: vs(45),
-      backgroundColor: 'red',
       width: '100%',
       position: 'absolute',
     },

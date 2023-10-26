@@ -1,5 +1,7 @@
 const Icons = {
+  add: require('@/assets/icons/add.png'),
   add_circle: require('@/assets/icons/add_circle.png'),
+  arrow_down: require('@/assets/icons/arrow_down.png'),
   arrow_left: require('@/assets/icons/arrow_left.png'),
   camera: require('@/assets/icons/camera.png'),
   chat: require('@/assets/icons/chat.png'),
@@ -14,9 +16,11 @@ const Icons = {
   filled_reel: require('@/assets/icons/filled_reel.png'),
   filled_search: require('@/assets/icons/filled_search.png'),
   flare: require('@/assets/icons/flare.png'),
+  grid: require('@/assets/icons/grid.png'),
   home: require('@/assets/icons/home.png'),
   instagram: require('@/assets/icons/instagram.png'),
   like: require('@/assets/icons/like.png'),
+  menu: require('@/assets/icons/menu.png'),
   more_vert: require('@/assets/icons/more_vert.png'),
   music_note: require('@/assets/icons/music_note.png'),
   post_1: require('@/assets/icons/post_1.png'),
@@ -26,6 +30,7 @@ const Icons = {
   search: require('@/assets/icons/search.png'),
   send: require('@/assets/icons/send.png'),
   upload: require('@/assets/icons/upload.png'),
+  userTag: require('@/assets/icons/userTag.png'),
   user_1: require('@/assets/icons/user_1.png'),
   video_call: require('@/assets/icons/video_call.png'),
 };
