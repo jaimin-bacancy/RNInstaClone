@@ -1,6 +1,7 @@
 import { MusicMediaResponse } from './Notes.response';
 
 export class ReelResponse {
+  readonly _id!: any;
   readonly name!: string;
   readonly userImage!: string;
   readonly uri!: string;

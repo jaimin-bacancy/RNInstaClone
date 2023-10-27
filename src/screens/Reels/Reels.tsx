@@ -7,7 +7,15 @@ import { goBack } from '@/navigators/NavigationRef';
 import { HEIGHT, Layout, vs } from '@/theme';
 import { strings } from '@/translations';
 import React, { useRef, useState } from 'react';
-import { FlatList, Image, Platform, Pressable, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  Platform,
+  Pressable,
+  StatusBar,
+  Text,
+  View,
+} from 'react-native';
 import style from './Reels.styles';
 
 function Header({ styles }) {
@@ -34,6 +42,7 @@ export function Reels(): JSX.Element {
   const flatListRef = useRef(null);
   const [viewableItem, setViewableItem] = useState('');
   const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 70 });
+  const androidExtraHeight = vs(50) + (StatusBar.currentHeight ?? 0);
 
   const onViewRef = useRef(viewableItems => {
     if (viewableItems?.viewableItems?.length > 0) {
@@ -106,8 +115,11 @@ export function Reels(): JSX.Element {
           />
         )}
         getItemLayout={(_data, index) => ({
-          length: HEIGHT - (Platform.OS === 'ios' ? vs(140) : vs(50)),
-          offset: HEIGHT - (Platform.OS === 'ios' ? vs(140) : vs(50)) * index,
+          length:
+            HEIGHT - (Platform.OS === 'ios' ? vs(140) : androidExtraHeight),
+          offset:
+            HEIGHT -
+            (Platform.OS === 'ios' ? vs(140) : androidExtraHeight) * index,
           index,
         })}
         pagingEnabled

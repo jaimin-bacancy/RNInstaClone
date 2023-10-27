@@ -1,21 +1,33 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Icons } from '@/assets';
 import { DoubleTap, Marquee } from '@/components';
 import { useStyle } from '@/hooks';
-import { Layout } from '@/theme';
+import { ReelResponse } from '@/models';
+import { HEIGHT, Layout, WIDTH, vs } from '@/theme';
 import { strings } from '@/translations';
 import ReadMore from '@fawazahmed/react-native-read-more';
-import React, { useCallback, useState } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  Image,
+  Platform,
+  Pressable,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withDelay,
   withSpring,
 } from 'react-native-reanimated';
+import Video from 'react-native-video';
 import style from './ReelItem.styles';
 
 type ReelItemPropTypes = {
-  item: {};
+  item: ReelResponse;
   viewableItem: any;
   onSharePress: Function;
   onCommentPress: Function;
@@ -24,6 +36,8 @@ type ReelItemPropTypes = {
   onFinishPlaying: Function;
   onMorePress: Function;
 };
+
+const androidExtraHeight = vs(50) + (StatusBar.currentHeight ?? 0);
 
 function ActionView({ count, icon, styles, onActionPress = () => {} }) {
   return (
@@ -177,6 +191,7 @@ function MediaView({ item, styles }) {
 
 export function ReelItem({
   item,
+  viewableItem,
   onSharePress,
   onCommentPress,
   onLikePress,
@@ -212,9 +227,115 @@ export function ReelItem({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [likeButtonScale, scale]);
 
+  const VideoPlayer = useRef(null);
+
+  const width = WIDTH;
+  const height =
+    HEIGHT - (Platform.OS === 'ios' ? vs(140) : androidExtraHeight);
+
+  // States
+  const [VideoDimensions, SetVideoDimensions] = useState({
+    width,
+    height: WIDTH,
+  });
+
+  const [progress, SetProgress] = useState(0);
+  const [duration, SetDuration] = useState(0);
+  const [Paused, SetPaused] = useState(false);
+  const [ShowOptions, SetShowOptions] = useState(false);
+
+  // Play/Pause video according to visibility
+  useEffect(() => {
+    if (viewableItem === item?._id) {
+      SetPaused(false);
+    } else {
+      SetPaused(true);
+    }
+  }, [item?._id, viewableItem]);
+
+  // Pause when use toggle options to True
+  useEffect(() => {
+    const pauseOnOptionsShow = true;
+    if (pauseOnOptionsShow) {
+      if (ShowOptions) {
+        SetPaused(true);
+      } else {
+        SetPaused(false);
+      }
+    }
+  }, [ShowOptions]);
+
+  // // Callback for Seek Update
+
+  // Callback for PlayBackStatusUpdate
+  const PlayBackStatusUpdate = playbackStatus => {
+    try {
+      const currentTime = Math.round(playbackStatus.currentTime);
+      const seekableDuration = Math.round(playbackStatus.seekableDuration);
+      if (currentTime) {
+        if (seekableDuration) {
+          SetProgress((currentTime / seekableDuration) * 100);
+        }
+      }
+    } catch (error) {}
+  };
+
+  // function for getting video dimensions on load complete
+  const onLoadComplete = event => {
+    const { naturalSize } = event;
+
+    try {
+      const naturalWidth = naturalSize.width;
+      const naturalHeight = naturalSize.height;
+      if (naturalWidth > naturalHeight) {
+        SetVideoDimensions({
+          width: width,
+          height: width * (naturalHeight / naturalWidth),
+        });
+      } else {
+        SetVideoDimensions({
+          width: height * (naturalWidth / naturalHeight),
+          height: height,
+        });
+      }
+      SetDuration(event.duration * 1000);
+    } catch (error) {}
+  };
+
+  // function for showing options
+  const onMiddlePress = (isPause: boolean) => {
+    try {
+      SetShowOptions(isPause);
+    } catch (error) {}
+  };
+
+  // Manage error here
+  const videoError = error => {
+    console.log('error :>> ', error);
+  };
+
   return (
     <DoubleTap singleTap={() => {}} doubleTap={doubleTap} delay={200}>
-      <View style={styles.container}>
+      <Pressable
+        delayLongPress={200}
+        onLongPress={() => onMiddlePress(true)}
+        onPressOut={() => onMiddlePress(false)}
+        style={styles.container}>
+        <Video
+          ref={VideoPlayer}
+          source={{ uri: item?.uri }}
+          style={VideoDimensions}
+          resizeMode="contain"
+          onError={videoError}
+          playInBackground={false}
+          progressUpdateInterval={1000}
+          paused={Paused}
+          muted={false}
+          repeat={true}
+          onLoad={onLoadComplete}
+          onProgress={PlayBackStatusUpdate}
+          onEnd={() => () => {}}
+        />
         <DetailsView item={item} styles={styles} />
         <StateView
           item={item}
@@ -231,7 +352,7 @@ export function ReelItem({
           source={Icons.favorite}
           style={[styles.imgFavorite, reanimatedStyle]}
         />
-      </View>
+      </Pressable>
     </DoubleTap>
   );
 }

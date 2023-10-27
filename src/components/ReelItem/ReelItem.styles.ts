@@ -1,11 +1,14 @@
 import { HEIGHT, Layout, Typography, WIDTH, hs, ms, vs } from '@/theme';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
+
+const androidExtraHeight = vs(50) + (StatusBar.currentHeight ?? 0);
+const height = HEIGHT - (Platform.OS === 'ios' ? vs(140) : androidExtraHeight);
 
 const styles = colors =>
   StyleSheet.create({
     container: {
       width: WIDTH,
-      height: HEIGHT - (Platform.OS === 'ios' ? vs(140) : vs(50)),
+      height: height,
       justifyContent: 'center',
     },
     textCount: {
@@ -96,6 +99,7 @@ const styles = colors =>
       resizeMode: 'contain',
     },
     imgFavorite: {
+      position: 'absolute',
       height: ms(100),
       width: ms(100),
       resizeMode: 'contain',
@@ -103,6 +107,22 @@ const styles = colors =>
     },
     imgActionColor: {
       tintColor: colors.black,
+    },
+    firstHalf: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: WIDTH * 0.25,
+      height: height,
+      zIndex: 99,
+    },
+    secondHalf: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: WIDTH * 0.25,
+      height: height,
+      zIndex: 99,
     },
   });
 
