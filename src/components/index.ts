@@ -10,6 +10,7 @@ import { Marquee } from './Marquee/Marquee';
 import { NotesItem } from './NotesItem/NotesItem';
 import { ReelItem } from './ReelItem/ReelItem';
 import { SearchBar } from './SearchBar/SearchBar';
+import { SearchItemPreview } from './SearchItemPreview/SearchItemPreview';
 import { SoundWaveItem } from './SoundWaveItem/SoundWaveItem';
 import { StoryItem } from './StoryItem/StoryItem';
 
@@ -26,6 +27,7 @@ export {
   NotesItem,
   ReelItem,
   SearchBar,
+  SearchItemPreview,
   SoundWaveItem,
   StoryItem,
 };

@@ -16,6 +16,7 @@ export const Colors = {
   //ComponentColors
   circleButtonBackground: '#E1E1EF',
   circleButtonColor: '#44427D',
+  white05: 'rgba(255,255,255,0.5)',
 };
 
 /* The code is defining a constant variable named `NavigationColors` which is of type
