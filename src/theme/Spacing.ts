@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -16,6 +16,7 @@ const scale = (size: number) => (width / guidelineBaseWidth) * size;
 const hs = (size: number) => (width / guidelineBaseWidth) * size;
 const vs = (size: number) => (height / guidelineBaseHeight) * size;
 const ms = (size: number, factor = 0.5) => size + (scale(size) - size) * factor;
+const keyboardVerticalOffset = Platform.OS === 'ios' ? ms(40) : 0;
 
 const Spacing = {
   paddingVertical: vs(12),
@@ -25,6 +26,7 @@ const Spacing = {
   borderRadius: ms(4),
   borderWidth: ms(1),
   screenBottomPadding: vs(30),
+  keyboardVerticalOffset: keyboardVerticalOffset,
 };
 
 export { Spacing, height, hs, ms, vs, width };

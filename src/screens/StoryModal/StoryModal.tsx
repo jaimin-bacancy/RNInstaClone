@@ -1,4 +1,3 @@
-import { Icons } from '@/assets';
 import { InstagramStoryLoader } from '@/components';
 import { useStyle } from '@/hooks';
 import { MediaResponse } from '@/models';
@@ -17,7 +16,7 @@ export function StoryModal(): JSX.Element {
   return (
     <View style={styles.container}>
       <View style={styles.viewLoaders}>
-        {data[storyId].medias.map((item: MediaResponse, index: number) => {
+        {data[storyId].stories.map((item: MediaResponse, index: number) => {
           return (
             <View
               key={index}
@@ -40,11 +39,18 @@ export function StoryModal(): JSX.Element {
         onPress={() => onStoryPress()}
         onPressIn={() => onPause()}
         onPressOut={onResume}>
-        <ImageBackground
-          source={Icons.post_1}
-          style={styles.storyContainer}
-          resizeMode={'contain'}
-        />
+        <>
+          {data[storyId].stories.map((item: MediaResponse, index: number) => {
+            return (
+              <ImageBackground
+                key={index}
+                source={{ uri: data[storyId].stories[currentStep].url }}
+                style={styles.storyContainer}
+                resizeMode={'contain'}
+              />
+            );
+          })}
+        </>
       </Pressable>
     </View>
   );

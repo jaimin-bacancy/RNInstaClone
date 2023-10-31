@@ -10,7 +10,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Image,
   Platform,
-  Pressable,
   ScrollView,
   StatusBar,
   Text,
@@ -255,7 +254,7 @@ export function ReelItem({
 
   // Pause when use toggle options to True
   useEffect(() => {
-    const pauseOnOptionsShow = true;
+    const pauseOnOptionsShow = false;
     if (pauseOnOptionsShow) {
       if (ShowOptions) {
         SetPaused(true);
@@ -316,11 +315,12 @@ export function ReelItem({
 
   return (
     <DoubleTap singleTap={() => {}} doubleTap={doubleTap} delay={200}>
-      <Pressable
+      <View style={styles.container}>
+        {/* <Pressable
         delayLongPress={200}
         onLongPress={() => onMiddlePress(true)}
         onPressOut={() => onMiddlePress(false)}
-        style={styles.container}>
+        style={styles.container}> */}
         <Video
           ref={VideoPlayer}
           source={{ uri: item?.uri }}
@@ -352,7 +352,8 @@ export function ReelItem({
           source={Icons.favorite}
           style={[styles.imgFavorite, reanimatedStyle]}
         />
-      </Pressable>
+      </View>
+      {/* </Pressable> */}
     </DoubleTap>
   );
 }

@@ -44,7 +44,7 @@ function CameraButton({ styles }: CameraButtonPropTypes) {
 function NotifyDot({ item, styles }: CameraButtonNotifyDotContainerPropTypes) {
   return (
     <View style={styles.viewUnSeenContainer}>
-      {!item.isSeen && <View style={styles.viewUnSeen} />}
+      {!item.isViewed && <View style={styles.viewUnSeen} />}
     </View>
   );
 }
@@ -55,7 +55,7 @@ function LastMessageView({ item, styles }) {
       <Text
         style={[
           styles.textLastMessage,
-          item.isSeen && styles.textSeenLastMessage,
+          item.isViewed && styles.textSeenLastMessage,
         ]}
         numberOfLines={1}>
         {item.isSent
@@ -78,7 +78,7 @@ function UserNameView({ item, styles }) {
   return (
     <View style={styles.viewUserName}>
       <Text
-        style={[styles.textUserName, item.isSeen && styles.textSeenUserName]}
+        style={[styles.textUserName, item.isViewed && styles.textSeenUserName]}
         numberOfLines={1}>
         {item.name ?? ''}
       </Text>

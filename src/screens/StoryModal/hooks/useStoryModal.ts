@@ -25,7 +25,7 @@ const useStoryModal = () => {
   }, [route.params?.storyId]);
 
   const currentIndex = useMemo(() => {
-    const lastViewedStory: MediaResponse[] = data[storyId].medias.filter(
+    const lastViewedStory: MediaResponse[] = data[storyId].stories.filter(
       (item: MediaResponse) => item.isViewed ?? false,
     );
 
@@ -39,7 +39,7 @@ const useStoryModal = () => {
   const linear = useSharedValue(0);
 
   const duration = 5 * 1000;
-  const width = (WIDTH - hs(4)) / data[storyId].medias.length;
+  const width = (WIDTH - hs(4)) / data[storyId].stories.length;
 
   /**
    * The function `onPause` cancels a linear animation.
@@ -76,13 +76,13 @@ const useStoryModal = () => {
   /* The `onStoryPress` function is a callback function that is called when a user presses on a story. */
   const onStoryPress = useCallback(() => {
     // Check if there are more steps
-    if (currentStep < Stories[storyId].medias.length - 1) {
+    if (currentStep < Stories[storyId].stories.length - 1) {
       linear.value = 0;
       // Move to the next step
       setCurrentStep(currentStep + 1);
       setData(prevState => {
         const oldData = [...prevState];
-        oldData[storyId].medias[currentStep].isViewed = true;
+        oldData[storyId].stories[currentStep].isViewed = true;
 
         return [...prevState, ...oldData];
       });

@@ -6,14 +6,8 @@ import { ProfileTabNavigator } from '@/navigators/ProfileTab.navigator';
 import { Layout } from '@/theme';
 import { strings } from '@/translations';
 import React, { useState } from 'react';
-import {
-  Image,
-  Pressable,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, Pressable, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import style from './Profile.styles';
 
 function ProfileBody({

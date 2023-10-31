@@ -5,7 +5,7 @@ export class ChatResponse {
   readonly isSent!: boolean;
   readonly isGroup?: boolean;
   readonly members?: MemberResponse[];
-  isSeen!: boolean;
+  isViewed!: boolean;
   createdAt!: Date;
 }
 

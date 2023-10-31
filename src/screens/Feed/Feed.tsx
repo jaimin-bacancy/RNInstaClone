@@ -1,11 +1,11 @@
 import { Icons } from '@/assets';
-import { FeedItem, Header, StoryItem } from '@/components';
+import { FeedItem, Header, StoryItem, StoryModal } from '@/components';
 import { ROUTES } from '@/constants';
 import { useStyle } from '@/hooks';
-import { Posts, StoriesPlaceholders } from '@/mocks';
+import { Posts, Stories, StoriesPlaceholders } from '@/mocks';
 import { PostResponse } from '@/models';
 import { navigate } from '@/navigators/NavigationRef';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { FlatList, ScrollView, View } from 'react-native';
 import style from './Feed.styles';
 
@@ -88,6 +88,15 @@ function PostsList({ data, setData }: PostsListPropTypes) {
 export function Feed(): JSX.Element {
   const { styles } = useStyle(style);
   const [posts, setPosts] = useState([...Posts]);
+  const [pressedIndex, setPressedIndex] = useState(-1);
+
+  const { current: viewedStories } = useRef(
+    Array(Stories.length)
+      .fill(Stories)
+      .map((row, index) =>
+        row?.[index]?.stories.map(item => item?.isViewed ?? false),
+      ),
+  );
 
   return (
     <View style={styles.container}>
@@ -97,17 +106,31 @@ export function Feed(): JSX.Element {
           rightIcon={Icons.chat}
           secondRightIcon={Icons.favorite_border}
           onRightPress={() => navigate(ROUTES.Chat)}
+          onSecondRightPress={() => navigate(ROUTES.AnimationListing)}
         />
         <StoriesList
           styles={styles}
           onPress={index => {
-            navigate(ROUTES.StoryModal, {
-              storyId: index,
-            });
+            setPressedIndex(index);
+            // navigate(ROUTES.StoryModal, {
+            //   storyId: index,
+            // });
           }}
         />
         <PostsList data={posts} setData={setPosts} />
       </ScrollView>
+      {pressedIndex > -1 && (
+        <StoryModal
+          viewedStories={viewedStories}
+          stories={Stories}
+          visible={true}
+          userStoryIndex={pressedIndex}
+          onUserStoryIndexChange={index => {
+            setPressedIndex(index);
+          }}
+          onComplete={() => setPressedIndex(-1)}
+        />
+      )}
     </View>
   );
 }
