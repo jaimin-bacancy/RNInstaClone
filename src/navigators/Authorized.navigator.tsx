@@ -12,6 +12,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { TabNavigator } from './Tab.navigator';
+import { AnimatedAddToCartButton } from '@/screens/AnimatedAddToCartButton/AnimatedAddToCartButton';
 
 export type AuthorizedStackParamList = {
   Feed: undefined;
@@ -27,6 +28,7 @@ export type AuthorizedStackParamList = {
   Chat: undefined;
   TabNavigator: undefined;
   Search: undefined;
+  AnimatedAddToCartButton: undefined;
 };
 
 const Stack = createStackNavigator<AuthorizedStackParamList>();
@@ -61,6 +63,10 @@ export function AuthorizedNavigator() {
       <Stack.Screen name={ROUTES.SoundWave} component={SoundWave} />
       <Stack.Screen name={ROUTES.AnimatedSeekBar} component={AnimatedSeekBar} />
       <Stack.Screen name={ROUTES.Chat} component={Chat} />
+      <Stack.Screen
+        name={ROUTES.AnimatedAddToCartButton}
+        component={AnimatedAddToCartButton}
+      />
     </Stack.Navigator>
   );
 }

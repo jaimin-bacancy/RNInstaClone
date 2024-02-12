@@ -18,4 +18,5 @@ export enum ROUTES {
   Posts = 'Posts',
   Videos = 'Videos',
   Tags = 'Tags',
+  AnimatedAddToCartButton = 'AnimatedAddToCartButton',
 }

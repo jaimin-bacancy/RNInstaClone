@@ -27,6 +27,10 @@ const list = [
     name: 'DropDown',
     screen: ROUTES.AnimatedDropdown,
   },
+  {
+    name: 'Animated Add To Cart Button',
+    screen: ROUTES.AnimatedAddToCartButton,
+  },
 ];
 
 export function AnimationListing(): JSX.Element {

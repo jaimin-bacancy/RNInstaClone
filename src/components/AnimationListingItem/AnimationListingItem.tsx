@@ -20,7 +20,9 @@ export function AnimationListingItem({
   return (
     <Animated.View>
       <TouchableOpacity onPress={onPress} style={[styles.container]}>
-        <Text style={styles.textName}>{item.name}</Text>
+        <Text style={styles.textName} numberOfLines={1}>
+          {item.name}
+        </Text>
       </TouchableOpacity>
     </Animated.View>
   );
